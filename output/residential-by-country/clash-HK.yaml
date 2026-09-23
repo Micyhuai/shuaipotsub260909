@@ -1,0 +1,50 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
+  type: vless
+  server: 157.90.165.181
+  port: 11762
+  uuid: 7c9b4360-6be9-47f2-ace9-b87297ea3d8f
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: R2gKMF0Tetlnesc1pPkZH9NaOeehw-f5_U9JKG_cLjU
+  servername: swdist.apple.com
+  client-fingerprint: ''
+- name: 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
+  type: vmess
+  server: dee2309db4944c248b6d4372c6641e7b.oylfmxz.cn
+  port: 443
+  uuid: d90e4077-bc7e-414d-a650-70bf1baae4d6
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  servername: ''
+  network: ws
+  ws-opts:
+    path: ''
+    headers:
+      Host: ''
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
+- name: AUTO
+  type: url-test
+  url: https://www.google.com/generate_204
+  interval: 300
+  proxies:
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
+rules:
+- MATCH,PROXIES
