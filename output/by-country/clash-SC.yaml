@@ -4,11 +4,13 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 (家宽) - xiaohe
-  type: vless
-  server: trdatair.egekaradecojistik.net.tr
-  port: 35577
-  uuid: b7d3a581-74d6-4ead-9235-ce9dedf08152
+- name: 🇸🇨 SC 01 - xiaohe
+  type: vmess
+  server: 156.239.224.107
+  port: 57278
+  uuid: 1270bed5-f908-4ecc-f1c8-de246033b186
+  alterId: 0
+  cipher: auto
   udp: true
   tls: false
   skip-cert-verify: true
@@ -16,18 +18,18 @@ proxies:
   ws-opts:
     path: /
     headers:
-      Host: play.google.com
+      Host: ''
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 (家宽) - xiaohe
+  - 🇸🇨 SC 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 (家宽) - xiaohe
+  - 🇸🇨 SC 01 - xiaohe
 rules:
 - MATCH,PROXIES
